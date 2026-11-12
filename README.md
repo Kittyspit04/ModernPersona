@@ -3,7 +3,12 @@
 A sleek, animated persona creator for [SillyTavern](https://github.com/SillyTavern/SillyTavern).
 It replaces the stock *Persona Management* drawer with a modern panel that has a persona gallery,
 an inline editor, trait management, AI enhancement tools and step-by-step wizards. Built for phones
-first, comfortable on desktop.
+first, comfortable on desktop: on screens wider than 1000 px it opens as a large centred window (up to
+1760 px) whatever SillyTavern's Chat Width is.
+
+Works on its own; with [Modern Mobile UI](https://github.com/Kittyspit04/ModernMobileUI) installed it follows
+that theme's appearance (Zinc, Midnight, Light, Liquid Glass, themes per chat), on phones and in its desktop
+mode.
 
 The look follows a dark zinc palette with springy motion. If your custom CSS already defines the
 `--cai-*` variables (background, bubble colours, text, radius, easing), the panel picks them up

@@ -86,6 +86,20 @@ body.mp-ai-busy #modern-persona-button .drawer-icon {
     -webkit-backdrop-filter: none;
 }
 #mp-drawer.drawer-content.openDrawer { overflow: hidden; }
+/* Desktop: a large centred window whatever SillyTavern's Chat Width is (menus are as wide as
+   the chat by default, which makes the editor cramped at narrow chat widths). Works on its own
+   and inside Modern Mobile UI's desktop mode. */
+@media screen and (min-width: 1001px) {
+    #mp-drawer.drawer-content {
+        --mp-win: min(1760px, calc(100vw - 32px));
+        width: var(--mp-win) !important;
+        min-width: 0 !important;
+        max-width: none !important;
+        left: calc((100% - var(--mp-win)) / 2) !important;
+        right: auto !important;
+        margin: 0 !important;
+    }
+}
 
 .mp-app {
     display: flex;
