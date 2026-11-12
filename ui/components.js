@@ -1,7 +1,7 @@
 /**
  * Larger reusable widgets: the AI review card, trait editor and avatar picker.
  */
-import { h, icon, button, iconButton, chip, clear, wordReveal, spinnerDots, flash, input, select as selectEl, stagger, motionEnabled, toastWarn, confirm, promptText } from './dom.js';
+import { h, icon, button, iconButton, chip, clear, wordReveal, spinnerDots, flash, input, select as selectEl, stagger, motionEnabled, toastWarn, confirm, promptText, revealInScroller } from './dom.js';
 import * as ai from '../lib/ai.js';
 import { CATEGORIES, PRESETS, categoryOf, getTraits, addTrait, removeTrait, updateTrait, moveTrait, groupTraits } from '../lib/traits.js';
 import { pushHistory } from '../lib/settings.js';
@@ -25,7 +25,7 @@ export function aiReview({ container, title, before = '', job, onApply, onAppend
         actions,
     );
     container.append(card);
-    card.scrollIntoView({ behavior: motionEnabled() ? 'smooth' : 'auto', block: 'nearest' });
+    requestAnimationFrame(() => revealInScroller(card));
 
     let result = '';
     let busy = true;

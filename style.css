@@ -130,9 +130,12 @@ body.mp-ai-busy #modern-persona-button .drawer-icon {
 /* --------------------------------------------------------------------------
    Layout: gallery + editor
    -------------------------------------------------------------------------- */
-.mp-layout { display: flex; flex: 1 1 auto; min-height: 0; }
+.mp-layout { display: flex; flex: 1 1 auto; min-height: 0; min-width: 0; }
 .mp-gallery {
     flex: 0 0 290px;
+    width: 290px;
+    min-width: 0;
+    max-width: 290px;
     display: flex; flex-direction: column;
     min-height: 0;
     border-right: 1px solid var(--mp-line);
@@ -144,7 +147,7 @@ body.mp-ai-busy #modern-persona-button .drawer-icon {
 
 /* Persona card */
 .mp-card {
-    display: flex; align-items: center; gap: 11px; width: 100%;
+    display: flex; align-items: center; gap: 11px; width: 100%; min-width: 0; max-width: 100%;
     padding: 9px 10px; margin: 0; text-align: left;
     background: transparent; border: 1px solid transparent; border-radius: 16px;
     color: var(--mp-text); cursor: pointer;
@@ -167,7 +170,7 @@ body.mp-ai-busy #modern-persona-button .drawer-icon {
     background: var(--mp-accent); color: var(--mp-accent-ink);
     box-shadow: 0 0 0 2px var(--mp-bg);
 }
-.mp-card-body { display: flex; flex-direction: column; min-width: 0; gap: 1px; flex: 1; }
+.mp-card-body { display: flex; flex-direction: column; min-width: 0; gap: 1px; flex: 1; overflow: hidden; }
 .mp-card-name { font-weight: 600; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .mp-card-sub { font-size: 12px; color: var(--mp-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .mp-card-flags { display: flex; gap: 6px; margin-top: 2px; }
@@ -650,7 +653,7 @@ dialog.popup.mp-popup .popup-button-cancel { background: transparent; color: var
     .mp-new-btn { width: 38px; padding: 0; }
 
     .mp-layout { flex-direction: column; }
-    .mp-gallery { flex: 0 0 auto; border-right: none; border-bottom: 1px solid var(--mp-line); padding: 8px 0 8px 12px; }
+    .mp-gallery { flex: 0 0 auto; width: auto; max-width: none; border-right: none; border-bottom: 1px solid var(--mp-line); padding: 8px 0 8px 12px; }
     .mp-gallery-count { display: none; }
     .mp-gallery-list { flex-direction: row; overflow-x: auto; overflow-y: hidden; gap: 4px; padding: 6px 12px 4px 2px; scrollbar-width: none; }
     .mp-gallery-list::-webkit-scrollbar { display: none; }

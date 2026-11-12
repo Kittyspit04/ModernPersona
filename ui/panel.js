@@ -1,7 +1,7 @@
 /**
  * The main Modern Persona panel: gallery + editor with tabs.
  */
-import { h, icon, button, iconButton, chip, toggle, segmented, field, input, textarea, select as selectEl, clear, stagger, flash, debounce, confirm, promptText, toastOk, toastWarn, toastErr, empty, motionEnabled } from './dom.js';
+import { h, icon, button, iconButton, chip, toggle, segmented, field, input, textarea, select as selectEl, clear, stagger, flash, debounce, confirm, promptText, toastOk, toastWarn, toastErr, empty, motionEnabled, centerInStrip } from './dom.js';
 import { aiReview, traitEditor, historyList } from './components.js';
 import { openCreateWizard, openInterviewWizard, openRefineWizard, openImportWizard } from './wizards.js';
 import * as personas from '../lib/personas.js';
@@ -164,7 +164,7 @@ export function createPanel(root, { onToggleReplace } = {}) {
         }
         gallery.append(scroller);
         stagger(scroller, 28, 420);
-        requestAnimationFrame(() => scroller.querySelector('.mp-card.is-selected')?.scrollIntoView({ block: 'nearest', inline: 'center', behavior: motionEnabled() ? 'smooth' : 'auto' }));
+        requestAnimationFrame(() => centerInStrip(scroller, scroller.querySelector('.mp-card.is-selected')));
     }
 
     function highlightCard(id) {

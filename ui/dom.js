@@ -210,6 +210,36 @@ export function wordReveal(el, text, { perWord = 28, max = 2600 } = {}) {
     return new Promise(resolve => setTimeout(resolve, total));
 }
 
+/**
+ * Scroll an element into view inside its nearest vertical scroll container only.
+ * Unlike element.scrollIntoView(), this never scrolls the page or the viewport
+ * sideways, which on phones would shift the whole UI.
+ */
+export function revealInScroller(el, { smooth = true } = {}) {
+    if (!el) return;
+    let parent = el.parentElement;
+    while (parent && parent !== document.body) {
+        const style = getComputedStyle(parent);
+        if (/(auto|scroll)/.test(style.overflowY) && parent.scrollHeight > parent.clientHeight) break;
+        parent = parent.parentElement;
+    }
+    if (!parent || parent === document.body) return;
+    const box = el.getBoundingClientRect();
+    const view = parent.getBoundingClientRect();
+    let delta = 0;
+    if (box.bottom > view.bottom) delta = box.bottom - view.bottom + 12;
+    if (box.top - delta < view.top) delta = box.top - view.top - 12;
+    if (delta) parent.scrollBy({ top: delta, behavior: smooth && motionEnabled() ? 'smooth' : 'auto' });
+}
+
+/** Center a child horizontally inside a horizontal scroller, without touching any ancestor. */
+export function centerInStrip(strip, el, { smooth = true } = {}) {
+    if (!strip || !el) return;
+    const left = el.offsetLeft - (strip.clientWidth - el.offsetWidth) / 2;
+    const top = el.offsetTop - (strip.clientHeight - el.offsetHeight) / 2;
+    strip.scrollTo({ left: Math.max(0, left), top: Math.max(0, top), behavior: smooth && motionEnabled() ? 'smooth' : 'auto' });
+}
+
 /** Stagger children entrance animation. */
 export function stagger(container, step = 40, max = 480) {
     if (!motionEnabled()) return;
