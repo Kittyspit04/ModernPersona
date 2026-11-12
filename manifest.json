@@ -1,0 +1,12 @@
+{
+    "display_name": "Modern Persona",
+    "loading_order": 100,
+    "requires": [],
+    "optional": [],
+    "js": "index.js",
+    "css": "style.css",
+    "author": "Kittyspit04",
+    "version": "1.0.0",
+    "homePage": "https://github.com/Kittyspit04/ModernPersona",
+    "auto_update": true
+}
