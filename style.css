@@ -13,7 +13,7 @@
     --mp-text: var(--cai-text, #ececf1);
     --mp-muted: var(--cai-muted, #a1a1aa);
     --mp-accent: var(--cai-accent, #ececf1);
-    --mp-accent-ink: var(--cai-bg, #18181b);
+    --mp-accent-ink: var(--cai-accent-ink, var(--cai-bg, #18181b));
     --mp-line: var(--cai-line, rgba(255, 255, 255, 0.07));
     --mp-line-strong: rgba(255, 255, 255, 0.16);
     --mp-glow: rgba(236, 236, 241, 0.35);
@@ -22,12 +22,16 @@
     --mp-radius: var(--cai-radius, 18px);
     --mp-radius-sm: 12px;
     --mp-radius-xs: 9px;
-    --mp-font: 'Onest', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --mp-font: var(--cai-font, 'Onest', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif);
     --mp-pop: var(--cai-pop, cubic-bezier(0.34, 1.56, 0.64, 1));
     --mp-smooth: var(--cai-smooth, cubic-bezier(0.22, 1, 0.36, 1));
     --mp-dur: 0.32s;
     --mp-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
 }
+/* Modern Mobile UI integration: colourful layout lends its accent, light mode softens shadows, its motion switch applies */
+body[data-mmu-chat="colorful"].mmu-on { --mp-accent: var(--mmu-accent, #8b7cf6); --mp-accent-ink: #ffffff; --mp-glow: color-mix(in srgb, var(--mmu-accent, #8b7cf6) 40%, transparent); }
+body[data-mmu-mode="light"].mmu-on { --mp-shadow: 0 18px 50px rgba(0, 0, 0, 0.18); --mp-surface-3: #d4d4d8; }
+body.mmu-on:not(.mmu-anim) .mp-app *, body.mmu-on:not(.mmu-anim) .mp-sheet-backdrop * { animation: none !important; transition-duration: 0.01ms !important; }
 
 /* --------------------------------------------------------------------------
    Keyframes
