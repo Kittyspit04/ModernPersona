@@ -518,7 +518,7 @@ export function createPanel(root, { onToggleReplace } = {}) {
                     toggle({ label: t`Give the AI the current character for context`, hint: t`Name and a short excerpt of the open character card`, checked: s.ai.includeCharacter, onChange: (val) => setSetting('ai.includeCharacter', val) }),
                 ),
                 h('div.mp-grid2', null,
-                    field({ label: t`Max response tokens`, control: input({ type: 'number', value: String(s.ai.responseLength), onChange: (val) => setSetting('ai.responseLength', Math.max(100, Number(val) || 450)) }) }),
+                    field({ label: t`Max response tokens`, hint: t`0 = SillyTavern's response length`, control: input({ type: 'number', value: String(s.ai.maxTokens ?? 0), onChange: (val) => setSetting('ai.maxTokens', Math.max(0, Number(val) || 0)) }) }),
                     field({ label: t`Output language`, hint: t`Blank = same as the source`, control: input({ value: s.ai.language, placeholder: t`e.g. German`, onChange: (val) => setSetting('ai.language', val.trim()) }) }),
                 ),
                 field({ label: t`System prompt`, hint: t`Sent with every AI tool`, control: sys }),
