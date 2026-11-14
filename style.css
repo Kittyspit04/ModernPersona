@@ -560,7 +560,10 @@ body.mp-ai-busy .mp-hero.is-active .mp-hero-avatar { animation: mp-ring 1.6s eas
    Sheet (wizards)
    -------------------------------------------------------------------------- */
 .mp-sheet-backdrop {
-    position: fixed; inset: 0; z-index: 10040;
+    /* An explicit size, not inset: 0. On phones SillyTavern makes <body> position: fixed and gives
+       <html> a transform, so <html> (0px high) becomes the containing block and inset: 0 collapses. */
+    position: fixed; top: 0; left: 0; z-index: 10040;
+    width: 100vw; height: 100vh; height: 100dvh;
     display: flex; align-items: center; justify-content: center;
     background: rgba(0, 0, 0, 0.55); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
     opacity: 0; transition: opacity 0.3s ease;
